@@ -9,8 +9,10 @@ CREATE TABLE event_log (
     PRIMARY KEY (id)
 );
 
-CREATE TABLE fruits(
-   id SERIAL event_log KEY,
-    event_type varchar,
-    event_msg text,
+CREATE TABLE event_log(
+   id SERIAL PRIMARY KEY,
+   event_type VARCHAR NOT NULL,
+   event_msg text
 );
+
+INSERT INTO event_log(event_type, event_msg) VALUES('type2', 'test test');
