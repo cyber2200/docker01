@@ -43,8 +43,6 @@ services:
   dct_be:
     build: ./be
     container_name: dct_be
-    depends_on:
-      - dct_db01
     restart: always
     working_dir: /app
     ports:
@@ -53,14 +51,13 @@ services:
       - "3000"
     volumes:
       - ./be:/app
+      - v1:/app/node_modules
     command: "npm run start:dev"
     environment:
       ENV: DEV
   dct_fe:
     build: ./fe
     container_name: dct_fe
-    depends_on:
-      - dct_be
     restart: always
     working_dir: /app
     ports:
@@ -69,4 +66,10 @@ services:
       - "3001"
     volumes:
       - ./fe:/app
+      - v2:/app/node_modules
     command: "npm run dev"
+volumes:
+  v1:
+    external: true
+  v2:
+    external: true
