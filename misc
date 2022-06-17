@@ -1,0 +1,2 @@
+docker build -t img01 .
+docker run -dp 3000:3000 img01
