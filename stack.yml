@@ -13,63 +13,63 @@ services:
       POSTGRES_USER: pg
       POSTGRES_PASSWORD: 123qwe
       POSTGRES_DB: pg01
-  dct_mongo01:
-    image: mongo:5.0
-    volumes:
-      - "./.mongo-data/db:/data/db"
-    restart: always
-    ports:
-      - 27017:27017
-    expose:
-      - "27017"
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: 123qwe
-  dct_db01:
-    platform: linux/x86_64
-    image: mysql:5.7
-    volumes:
-      - "./.mysql-data/db:/var/lib/mysql"
-    restart: always
-    ports:
-      - 3307:3306
-    expose:
-      - "3307"
-    environment:
-      MYSQL_ROOT_PASSWORD: 123qwe
-      MYSQL_DATABASE: dct_db01
-      MYSQL_USER: dct_db01
-      MYSQL_PASSWORD: 123qwe
-  dct_be:
-    build: ./be
-    container_name: dct_be
-    restart: always
-    working_dir: /app
-    ports:
-      - "3000:3000"
-    expose:
-      - "3000"
-    volumes:
-      - ./be:/app
-      - v1:/app/node_modules
-    command: "npm run start:dev"
-    environment:
-      ENV: DEV
-  dct_fe:
-    build: ./fe
-    container_name: dct_fe
-    restart: always
-    working_dir: /app
-    ports:
-      - "3001:3001"
-    expose:
-      - "3001"
-    volumes:
-      - ./fe:/app
-      - v2:/app/node_modules
-    command: "npm run dev"
-volumes:
-  v1:
-    external: true
-  v2:
-    external: true
+#   dct_mongo01:
+#     image: mongo:5.0
+#     volumes:
+#       - "./.mongo-data/db:/data/db"
+#     restart: always
+#     ports:
+#       - 27017:27017
+#     expose:
+#       - "27017"
+#     environment:
+#       MONGO_INITDB_ROOT_USERNAME: root
+#       MONGO_INITDB_ROOT_PASSWORD: 123qwe
+#   dct_db01:
+#     platform: linux/x86_64
+#     image: mysql:5.7
+#     volumes:
+#       - "./.mysql-data/db:/var/lib/mysql"
+#     restart: always
+#     ports:
+#       - 3307:3306
+#     expose:
+#       - "3307"
+#     environment:
+#       MYSQL_ROOT_PASSWORD: 123qwe
+#       MYSQL_DATABASE: dct_db01
+#       MYSQL_USER: dct_db01
+#       MYSQL_PASSWORD: 123qwe
+#   dct_be:
+#     build: ./be
+#     container_name: dct_be
+#     restart: always
+#     working_dir: /app
+#     ports:
+#       - "3000:3000"
+#     expose:
+#       - "3000"
+#     volumes:
+#       - ./be:/app
+#       - v1:/app/node_modules
+#     command: "npm run start:dev"
+#     environment:
+#       ENV: DEV
+#   dct_fe:
+#     build: ./fe
+#     container_name: dct_fe
+#     restart: always
+#     working_dir: /app
+#     ports:
+#       - "3001:3001"
+#     expose:
+#       - "3001"
+#     volumes:
+#       - ./fe:/app
+#       - v2:/app/node_modules
+#     command: "npm run dev"
+# volumes:
+#   v1:
+#     external: true
+#   v2:
+#     external: true
