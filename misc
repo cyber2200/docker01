@@ -1,3 +1,16 @@
 docker build -t img01 .
 docker run -dp 3000:3000 img01
+docker exec -it <container_id> bash
 
+CREATE TABLE event_log (
+    id int NOT NULL AUTO_INCREMENT,
+    event_type varchar(255) default '',
+    event_msg text,
+    PRIMARY KEY (id)
+);
+
+CREATE TABLE fruits(
+   id SERIAL event_log KEY,
+    event_type varchar,
+    event_msg text,
+);

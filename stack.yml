@@ -10,9 +10,9 @@ services:
     expose:
       - "5432"
     environment:
-      POSTGRES_USER: pg
+      POSTGRES_USER: dct_pg01
       POSTGRES_PASSWORD: 123qwe
-      POSTGRES_DB: pg01
+      POSTGRES_DB: dct_pg01
   dct_mongo01:
     image: mongo:5.0
     volumes:
@@ -25,7 +25,7 @@ services:
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: 123qwe
-  dct_db01:
+  dct_mysql01:
     platform: linux/x86_64
     image: mysql:5.7
     volumes:
@@ -37,8 +37,8 @@ services:
       - "3307"
     environment:
       MYSQL_ROOT_PASSWORD: 123qwe
-      MYSQL_DATABASE: dct_db01
-      MYSQL_USER: dct_db01
+      MYSQL_DATABASE: dct_mysql01
+      MYSQL_USER: dct_mysql01
       MYSQL_PASSWORD: 123qwe
   dct_be:
     build: ./be
