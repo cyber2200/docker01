@@ -1,5 +1,4 @@
-docker build -t img01 .
-docker run -dp 3000:3000 img01
+Connect to Docker container:<br />
 docker exec -it <container_id> bash
 
 Password are in the compose file
