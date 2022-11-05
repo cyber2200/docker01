@@ -2,8 +2,10 @@ docker build -t img01 .
 docker run -dp 3000:3000 img01
 docker exec -it <container_id> bash
 
+Password are in the compose file
+
 Mysql:
-mysql -uroot
+mysql -uroot -p
 CREATE TABLE event_log (
     id int NOT NULL AUTO_INCREMENT,
     event_type varchar(255) default '',
