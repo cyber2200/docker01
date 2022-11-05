@@ -3,6 +3,7 @@ docker run -dp 3000:3000 img01
 docker exec -it <container_id> bash
 
 Mysql:
+mysql -uroot
 CREATE TABLE event_log (
     id int NOT NULL AUTO_INCREMENT,
     event_type varchar(255) default '',
@@ -11,6 +12,7 @@ CREATE TABLE event_log (
 );
 
 Pg:
+psql --username=dct_pg01 --password
 CREATE TABLE event_log(
    id SERIAL PRIMARY KEY,
    event_type VARCHAR NOT NULL,
