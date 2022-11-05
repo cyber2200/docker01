@@ -2,7 +2,7 @@ export class PgDataLayer {
     async getPgTestRes() {
       const { Client } = require('pg');
       const delay: any = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
-      await delay(1000)
+      await delay(1000);
       const client: any = new Client({
         user: 'dct_pg01',
         host: 'dct_pg01',
