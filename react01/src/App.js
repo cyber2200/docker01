@@ -1,6 +1,6 @@
-import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { updateEmail, updatePassword } from './redux/login';
+import { loginActionApi } from "./redux/login";
 
 function App() {
 
@@ -9,6 +9,7 @@ function App() {
 
   const loginAction = (e) => {
     e.preventDefault();
+    dispatch(loginActionApi());
     console.log(state);
   }
 
@@ -27,6 +28,9 @@ function App() {
         <input id="password" type="password" placeholder="password" value={ state.login.password } onChange={passwordChange} />
         <input type="submit" />
       </form>
+      <div>
+        { state.login.apiStatus }
+      </div>
     </div>
   );
 }

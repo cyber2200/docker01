@@ -68,8 +68,23 @@ services:
       - ./fe:/app
       - v2:/app/node_modules
     command: "npm run dev"
+  dct_react01:
+    build: ./react01
+    container_name: react01
+    restart: always
+    working_dir: /app
+    ports:
+      - "3002:3002"
+    expose:
+      - "3002"
+    volumes:
+      - ./react01:/app
+      - v3:/app/node_modules
+    command: "npm run start"
 volumes:
   v1:
     external: true
   v2:
+    external: true
+  v3:
     external: true
