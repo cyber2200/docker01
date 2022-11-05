@@ -3,8 +3,8 @@ docker exec -it <container_id> bash
 
 Password are in the compose file
 
-Mysql:
-mysql -uroot -p
+Mysql:<br />
+mysql -uroot -p<br />
 CREATE TABLE event_log (
     id int NOT NULL AUTO_INCREMENT,
     event_type varchar(255) default '',
@@ -12,13 +12,13 @@ CREATE TABLE event_log (
     PRIMARY KEY (id)
 );
 
-Pg:
-psql --username=dct_pg01 --password
+Pg:<br />
+psql --username=dct_pg01 --password<br />
 CREATE TABLE event_log(
    id SERIAL PRIMARY KEY,
    event_type VARCHAR NOT NULL,
    event_msg text
 );
-
+<br />
 Insert:
 INSERT INTO event_log(event_type, event_msg) VALUES('type2', 'test test');
