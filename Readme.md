@@ -22,3 +22,17 @@ CREATE TABLE event_log(
 <br />
 Insert:
 INSERT INTO event_log(event_type, event_msg) VALUES('type2', 'test test');
+
+CREATE TABLE users (
+    id int NOT NULL AUTO_INCREMENT,
+    email varchar(255) default '',
+   	password varchar(255) default '',
+    PRIMARY KEY (id)
+);
+
+CREATE TABLE users_sessions (
+    id int NOT NULL AUTO_INCREMENT,
+    sessionId varchar(255) default '',
+    usersId int,
+    PRIMARY KEY (id)
+);

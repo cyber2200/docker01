@@ -7,8 +7,11 @@ const initialState = {
   apiStatus: ''
 };
 
-export const loginActionApi = createAsyncThunk('/test', async () => {
-  const res = await axios.post('http://localhost:3000/mysqlTest');
+export const loginActionApi = createAsyncThunk('/test', async (arg, { getState }) => {
+  const { login } = getState();
+  const postData = { ...login };
+  delete postData.apiStatus;
+  const res = await axios.post('http://localhost:3000/api/login', postData);
   return res;
 });
 

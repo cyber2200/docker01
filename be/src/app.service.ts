@@ -23,4 +23,9 @@ export class AppService {
     const pgDataLayer = new PgDataLayer();
     return pgDataLayer.getPgTestRes();
   }
+
+  apiLogin(postData): any {
+    const mysqlDataLayer = new MysqlDataLayer();
+    return mysqlDataLayer.apiLogin(postData);
+  }
 }
