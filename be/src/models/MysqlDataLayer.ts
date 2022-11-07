@@ -43,4 +43,8 @@ export class MysqlDataLayer {
       }
       return ret;
     }
+
+    async apiVerify(postData) {
+      const res = await this.q('SELECT * FROM `users_sessions` WHERE sessionId = ?;', [postData.sessionId])   
+    }
   }

@@ -1,9 +1,9 @@
-function Main() {
+function Pages() {
   return (
     <div className="App">
-      Main
+      Pages
     </div>
   );
 }
 
-export default Main;
+export default Pages;

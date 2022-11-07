@@ -4,10 +4,11 @@ import axios from 'axios';
 const initialState = {
   email: '',
   password: '',
-  apiStatus: ''
+  apiStatus: '',
+  redirect: false
 };
 
-export const loginActionApi = createAsyncThunk('/test', async (arg, { getState }) => {
+export const loginActionApi = createAsyncThunk('/api/login', async (arg, { getState }) => {
   const { login } = getState();
   const postData = { ...login };
   delete postData.apiStatus;
@@ -25,26 +26,31 @@ export const counterSlice = createSlice({
     updatePassword: (state, action) => {
       state.password = action.payload
     },
+    updateRedirect: (state, action) => {
+      state.redirect = action.payload;
+    }
   },
   extraReducers: builder => {
+    // Login action API
     builder
       .addCase(loginActionApi.call, (state, action) => {
         state.apiStatus = '';
       })
       .addCase(loginActionApi.pending, (state, action) => {
         state.apiStatus = 'Loading...';
-        console.log('Loading...');
       })
       .addCase(loginActionApi.fulfilled, (state, action) => {
+        if (action.payload.data.res === 'OK') {
+          state.redirect = true;
+          localStorage.setItem('sessionId', action.payload.data.sessionId);
+        }
         state.apiStatus = 'Done';
-        console.log('Done');
       })
       .addCase(loginActionApi.rejected, (state, action) => {
         state.apiStatus = 'Failed...';
-        console.log('Rejected');
       });
   }
 });
 
-export const { updateEmail, updatePassword } = counterSlice.actions;
+export const { updateEmail, updatePassword, updateRedirect } = counterSlice.actions;
 export default counterSlice.reducer;

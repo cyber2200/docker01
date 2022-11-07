@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { updateEmail, updatePassword } from '../redux/login';
 import { loginActionApi } from "../redux/login";
+import { Navigate } from 'react-router-dom';
 
 function Login() {
 
@@ -10,7 +11,6 @@ function Login() {
   const loginAction = (e) => {
     e.preventDefault();
     dispatch(loginActionApi());
-    // console.log(state);
   }
 
   const emailChange = (e) => {
@@ -19,6 +19,12 @@ function Login() {
 
   const passwordChange = (e) => {
     dispatch(updatePassword(e.target.value));
+  }
+  
+  if (state.login.redirect) {
+    return(
+      <Navigate replace to="/dashboard" />
+    )
   }
 
   return (
