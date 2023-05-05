@@ -1,7 +1,7 @@
 Connect to Docker container:<br />
 docker exec -it <container_id> bash
 
-Password are in the compose file
+Password are in the compose file.
 
 Mysql:<br />
 mysql -uroot -p<br />
