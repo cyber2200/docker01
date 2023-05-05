@@ -23,11 +23,12 @@ CREATE TABLE users_sessions (
     usersId int,
     PRIMARY KEY (id)
 );<br />
-User password is 123<br />
 INSERT INTO users SET email = 'test@test.com', password = '202cb962ac59075b964b07152d234b70';<br/>
 INSERT INTO event_log SET event_type = 'test_event', event_msg = '111';<br/>
 INSERT INTO event_log SET event_type = 'test_event', event_msg = '222';<br/>
 INSERT INTO event_log SET event_type = 'test_event', event_msg = '333';</br>
+<br />
+User password is 123<br />
 <br /><br />
 Pg:<br />
 psql --username=docker01_pg01 --password<br />
