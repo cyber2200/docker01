@@ -81,10 +81,37 @@ services:
       - ./react01:/app
       - docker01_v3:/app/node_modules
     command: "npm run start"
+  docker01_fastapi01:
+    build: ./fastapi01
+    container_name: fastapi01
+    restart: always
+    working_dir: /app
+    ports:
+      - "3003:3003"
+    expose:
+      - "3003"
+    volumes:
+      - ./fastapi01:/app
+    command: "uvicorn main:app --host 0.0.0.0 --port 3003 --reload"
+  docker01_fe02:
+    build: ./fe02
+    container_name: fe02
+    restart: always
+    working_dir: /app
+    ports:
+      - "3004:3004"
+    expose:
+      - "3004"
+    volumes:
+      - ./fe02:/app
+      - docker01_v4:/app/node_modules
+    command: "npm run start"
 volumes:
   docker01_v1:
     external: true
   docker01_v2:
     external: true
   docker01_v3:
+    external: true
+  docker01_v4:
     external: true
