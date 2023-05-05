@@ -26,7 +26,8 @@ export class MysqlDataLayer {
         msg: '',
         sessionId : ''
       };
-
+      console.log(Md5.hashStr(postData.password));
+      
       // Check if the Email exist
       const dbRes = await this.q('SELECT * FROM `users` WHERE `email` = ?;', [postData.email]);
       if (dbRes.length !== 0) {
