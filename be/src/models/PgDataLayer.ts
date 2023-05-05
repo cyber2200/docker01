@@ -4,9 +4,9 @@ export class PgDataLayer {
       const delay: any = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
       await delay(1000);
       const client: any = new Client({
-        user: 'dct_pg01',
-        host: 'dct_pg01',
-        database: 'dct_pg01',
+        user: 'docker01_pg01',
+        host: 'docker01_pg01',
+        database: 'docker01_pg01',
         password: '123qwe',
         port: 5432
       });

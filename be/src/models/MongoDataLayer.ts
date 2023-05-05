@@ -3,7 +3,7 @@ import { MongoClient } from "mongodb";
 export class MongoDataLayer {
   async getMongotTestRes() {
     const { MongoClient } = require('mongodb');
-    const uri = 'mongodb://root:123qwe@dct_mongo01:27017/';
+    const uri = 'mongodb://root:123qwe@docker01_mongo01:27017/';
     const client: MongoClient = new MongoClient(uri);
     try {
       await client.connect();

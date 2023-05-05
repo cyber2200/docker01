@@ -4,7 +4,7 @@ import { loginResponse } from 'src/types';
 export class MysqlDataLayer {
     async q(q: string, vals: any) {
       const mysql = require('mysql2/promise');
-      const connection = await mysql.createConnection({ host: 'dct_mysql01', user: 'dct_mysql01', password: '123qwe', database: 'dct_mysql01' });
+      const connection = await mysql.createConnection({ host: 'docker01_mysql01', user: 'docker01_mysql01', password: '123qwe', database: 'docker01_mysql01' });
       const res = await connection.query(q, vals);
       await connection.end();
       const ret: any = { rows: [] };

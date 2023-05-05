@@ -1,6 +1,6 @@
 version: '2'
 services:
-  dct_pg01:
+  docker01_pg01:
     image: postgres:14.0
     volumes:
       - "./.postgres-data/data:/var/lib/postgresql/data"
@@ -10,10 +10,10 @@ services:
     expose:
       - "5432"
     environment:
-      POSTGRES_USER: dct_pg01
+      POSTGRES_USER: docker01_pg01
       POSTGRES_PASSWORD: 123qwe
-      POSTGRES_DB: dct_pg01
-  dct_mongo01:
+      POSTGRES_DB: docker01_pg01
+  docker01_mongo01:
     image: mongo:5.0
     volumes:
       - "./.mongo-data/db:/data/db"
@@ -25,7 +25,7 @@ services:
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: 123qwe
-  dct_mysql01:
+  docker01_mysql01:
     platform: linux/x86_64
     image: mysql:5.7
     volumes:
@@ -37,12 +37,12 @@ services:
       - "3307"
     environment:
       MYSQL_ROOT_PASSWORD: 123qwe
-      MYSQL_DATABASE: dct_mysql01
-      MYSQL_USER: dct_mysql01
+      MYSQL_DATABASE: docker01_mysql01
+      MYSQL_USER: docker01_mysql01
       MYSQL_PASSWORD: 123qwe
-  dct_be:
+  docker01_be:
     build: ./be
-    container_name: dct_be
+    container_name: docker01_be
     restart: always
     working_dir: /app
     ports:
@@ -51,13 +51,13 @@ services:
       - "3000"
     volumes:
       - ./be:/app
-      - v1:/app/node_modules
+      - docker01_v1:/app/node_modules
     command: "npm run start:dev"
     environment:
       ENV: DEV
-  dct_fe:
+  docker01_fe:
     build: ./fe
-    container_name: dct_fe
+    container_name: docker01_fe
     restart: always
     working_dir: /app
     ports:
@@ -66,9 +66,9 @@ services:
       - "3001"
     volumes:
       - ./fe:/app
-      - v2:/app/node_modules
+      - docker01_v2:/app/node_modules
     command: "npm run dev"
-  dct_react01:
+  docker01_react01:
     build: ./react01
     container_name: react01
     restart: always
@@ -79,12 +79,12 @@ services:
       - "3002"
     volumes:
       - ./react01:/app
-      - v3:/app/node_modules
+      - docker01_v3:/app/node_modules
     command: "npm run start"
 volumes:
-  v1:
+  docker01_v1:
     external: true
-  v2:
+  docker01_v2:
     external: true
-  v3:
+  docker01_v3:
     external: true
