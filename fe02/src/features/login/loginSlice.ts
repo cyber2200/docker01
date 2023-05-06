@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { RootState, AppThunk } from '../../app/store';
-import { loginApiCall } from './loginAPI';
+import { RootState } from '../../app/store';
+import { loginApiCall, getUsersApiCall } from './loginAPI';
 
 export interface LoginState {
   formData: {
@@ -22,6 +22,15 @@ export const login = createAsyncThunk(
   'login/login',
   async (formData: any) => {
     const res = await loginApiCall(formData);
+    console.log(res);
+    return res;
+  }
+);
+
+export const getUsers = createAsyncThunk(
+  'login/getUsers',
+  async () => {
+    const res = await getUsersApiCall();
     console.log(res);
     return res;
   }

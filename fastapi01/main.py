@@ -41,3 +41,7 @@ async def auth(request: Request):
 @app.post("/api/logout")
 async def logout(request: Request):
     return {"res": "OK"}
+
+@app.post("/api/get_users")
+async def logout(request: Request):
+    return await lib.db.get_users()

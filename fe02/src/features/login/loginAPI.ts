@@ -7,3 +7,11 @@ export function loginApiCall(formData: any) {
     });
   });
 }
+
+export function getUsersApiCall() {
+  return new Promise((resolve) => {
+    axios.post('http://localhost:3003/api/get_users').then((data: any) => {
+      resolve(data);
+    });
+  });
+}

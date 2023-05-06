@@ -52,3 +52,20 @@ async def auth(request):
     
     db.close();
     return {"res": "OK"}
+
+async def get_users():
+    db = get_db_conn()
+    cursor = db.cursor()
+
+    cursor.execute('''
+        SELECT * FROM users;
+    ''')
+    columns = cursor.description
+    data = []
+    for value in cursor.fetchall():
+        tmp = {}
+        for (index,column) in enumerate(value):
+            tmp[columns[index][0]] = column
+        data.append(tmp)
+    
+    return {"res": "OK", "users_data": data}

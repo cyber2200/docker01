@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import axios from 'axios';
-import { Routes, Route, Outlet, Link, useLocation } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import { Login } from './features/login/Login';
 import { Main } from './features/login/Main';
 import { Data } from './features/login/Data';
