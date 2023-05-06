@@ -28,25 +28,7 @@ app.add_middleware(
 
 @app.get("/")
 def read_root():
-    return {"Hello": "World"}
-
-@app.get("/items/{item_id}")
-def read_item(item_id: int, q: Union[str, None] = None):
-    x: str = "123ccasd"
-    print(x)
-    return {"item_id": item_id, "q": q}
-
-@app.post("/test_post")
-def test_post():
-    ret = lib.db.get_data()
-    return ret
-
-@app.post("/test")
-def test():
-    arr = ({"f": "123"},)
-    for t in arr:
-        print(t["f"])
-    return {"res": "OK"}
+    return {"v": "0.001"}
 
 @app.post("/api/login")
 async def login(request: Request):

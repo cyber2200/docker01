@@ -11,28 +11,6 @@ def get_db_conn():
     )
     return db
 
-def get_data():
-    dd = []
-    try:
-        with connector.connect(
-            host = "localhost",
-            user = "root",
-            password = "123qwe",
-            database = "advsys"
-        ) as existing_database:
-            with existing_database.cursor() as cursor:
-                #cursor.execute("INSERT INTO adv_data (date, offer_name) VALUES (NOW(), %s)", ("TEST !!!!####",))
-                #existing_database.commit()
-                cursor.execute("SELECT * FROM adv_data")
-                returned_data = cursor.fetchall()
-                for result in returned_data:
-                    print(result)
-                    dd.append({"t": result[2], "t2": result[8]})
-
-    except connector.Error as e: 
-        print(e)
-    return {"res": "OK", "data": dd}
-
 async def login(request):
     json_req_data = await request.json()
 
@@ -54,8 +32,10 @@ async def login(request):
             INSERT INTO users_sessions SET session_id = %s, user_id = %s
         ''', (session_id, data[0][0]))
         db.commit()
+        db.close()
         return {"res": "OK", "msg": "", "session_id": session_id}
 
+    db.close()
     return {"res": "NOK", "msg": "Password does not match", "session_id": ""}
 
 async def auth(request):
@@ -67,6 +47,8 @@ async def auth(request):
     ''', (json_req_data["session_id"], ))
     data = cursor.fetchall()
     if len(data) == 0:
+        db.close();
         return {"res": "NOK"}
     
+    db.close();
     return {"res": "OK"}
