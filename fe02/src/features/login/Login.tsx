@@ -6,6 +6,7 @@ import {
   loadingState,
   setLoadingState
 } from './loginSlice';
+import { setCookie } from '../../lib/utils';
 
 export function Login() {
   const formDataVals = useAppSelector(formData);
@@ -16,8 +17,9 @@ export function Login() {
     e.preventDefault();
     dispatch(setLoadingState('Loading...'))
     const r = await dispatch(login(formDataVals));
-    const t = r as {payload: { msg: string; res: string; }}
+    const t = r as {payload: { msg: string; res: string; session_id: string; }}
     if (t.payload.res === 'OK') {
+      setCookie('session_id', t.payload.session_id, 365*3);
       window.location.href = '/main';
     } else {
       dispatch(setLoadingState(t.payload.msg))

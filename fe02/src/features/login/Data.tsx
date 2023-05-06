@@ -1,10 +1,10 @@
 import Menu from '../../components/Menu';
 
-export function Ssps() {
+export function Data() {
   return (
     <div>
       <Menu />
-      SSPs
+      Data
     </div>
   );
 }

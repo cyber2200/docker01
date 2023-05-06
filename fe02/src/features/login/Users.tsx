@@ -1,10 +1,10 @@
 import Menu from '../../components/Menu';
 
-export function Placements() {
+export function Users() {
   return (
     <div>
       <Menu />
-      Placements
+      Users
     </div>
   );
 }

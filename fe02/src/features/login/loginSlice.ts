@@ -22,6 +22,7 @@ export const login = createAsyncThunk(
   'login/login',
   async (formData: any) => {
     const res = await loginApiCall(formData);
+    console.log(res);
     return res;
   }
 );

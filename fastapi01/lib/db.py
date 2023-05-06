@@ -4,7 +4,7 @@ import hashlib
 
 def get_db_conn():
     db = connector.connect(
-        host = "localhost",
+        host = "docker01_mysql01",
         user = "root",
         password = "123qwe",
         database = "fastapi01"
@@ -44,7 +44,8 @@ async def login(request):
     if len(data) == 0:
         return {"res": "NOK", "msg": "Can't find this Email", "session_id": ""}
 
-    if data[0][2] == json_req_data["password"]:
+    md5pass = hashlib.md5(json_req_data["password"].encode('utf-8')).hexdigest()
+    if data[0][2] == md5pass:
         unix_ts = str(time.time())
         t = unix_ts.encode('utf-8')
         result = hashlib.md5(t)
