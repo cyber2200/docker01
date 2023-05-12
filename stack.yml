@@ -4,7 +4,7 @@ services:
     image: postgres:14.0
     volumes:
       - "./.postgres-data/data:/var/lib/postgresql/data"
-    restart: always
+    restart: "no"
     ports:
       - 5432:5432
     expose:
@@ -17,7 +17,7 @@ services:
     image: mongo:5.0
     volumes:
       - "./.mongo-data/db:/data/db"
-    restart: always
+    restart: "no"
     ports:
       - 27017:27017
     expose:
@@ -30,7 +30,7 @@ services:
     image: mysql:5.7
     volumes:
       - "./.mysql-data/db:/var/lib/mysql"
-    restart: always
+    restart: "no"
     ports:
       - 3307:3306
     expose:
@@ -43,7 +43,7 @@ services:
   docker01_be:
     build: ./be
     container_name: docker01_be
-    restart: always
+    restart: "no"
     working_dir: /app
     ports:
       - "3000:3000"
@@ -58,7 +58,7 @@ services:
   docker01_fe:
     build: ./fe
     container_name: docker01_fe
-    restart: always
+    restart: "no"
     working_dir: /app
     ports:
       - "3001:3001"
@@ -71,7 +71,7 @@ services:
   docker01_react01:
     build: ./react01
     container_name: react01
-    restart: always
+    restart: "no"
     working_dir: /app
     ports:
       - "3002:3002"
@@ -84,7 +84,7 @@ services:
   docker01_fastapi01:
     build: ./fastapi01
     container_name: fastapi01
-    restart: always
+    restart: "no"
     working_dir: /app
     ports:
       - "3003:3003"
@@ -96,7 +96,7 @@ services:
   docker01_fe02:
     build: ./fe02
     container_name: fe02
-    restart: always
+    restart: "no"
     working_dir: /app
     ports:
       - "3004:3004"
