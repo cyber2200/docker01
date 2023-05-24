@@ -40,9 +40,9 @@ services:
       MYSQL_DATABASE: docker01_mysql01
       MYSQL_USER: docker01_mysql01
       MYSQL_PASSWORD: 123qwe
-  docker01_be:
-    build: ./be
-    container_name: docker01_be
+  docker01_nest01:
+    build: ./nest01
+    container_name: docker01_nest01
     restart: "no"
     working_dir: /app
     ports:
@@ -55,9 +55,9 @@ services:
     command: "npm run start:dev"
     environment:
       ENV: DEV
-  docker01_fe:
-    build: ./fe
-    container_name: docker01_fe
+  docker01_nuxt01:
+    build: ./nuxt01
+    container_name: docker01_next01
     restart: "no"
     working_dir: /app
     ports:
@@ -93,9 +93,9 @@ services:
     volumes:
       - ./fastapi01:/app
     command: "uvicorn main:app --host 0.0.0.0 --port 3003 --reload"
-  docker01_fe02:
-    build: ./fe02
-    container_name: fe02
+  docker01_react_redux_ts01:
+    build: ./react_redux_ts01
+    container_name: react_redux_ts01
     restart: "no"
     working_dir: /app
     ports:
@@ -103,7 +103,7 @@ services:
     expose:
       - "3004"
     volumes:
-      - ./fe02:/app
+      - ./react_redux_ts01:/app
       - docker01_v4:/app/node_modules
     command: "npm run start"
 volumes:
