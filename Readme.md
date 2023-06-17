@@ -56,4 +56,5 @@ CREATE TABLE users_sessions (
 );<br />
 INSERT INTO users SET email = 'test@test.com', password = '202cb962ac59075b964b07152d234b70';<br/>
 <br />
-User password is 123<br />
+User password is 123<br /><br />
+npx create-react-app --template=redux-typescript fe
